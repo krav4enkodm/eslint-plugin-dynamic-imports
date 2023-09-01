@@ -1,0 +1,11 @@
+parser: "@babel/eslint-parser"
+parserOptions:
+  babelOptions:
+    presets: ["@babel/preset-env"]
+env:
+  node: true
+extends: eslint:recommended
+rules:
+  semi: [error, always]
+  quotes: [error, single]
+ignorePatterns: [lib/**]

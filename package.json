@@ -4,6 +4,7 @@
   "description": "Rules for dynamic imports validation",
   "main": "./lib/index.js",
   "scripts": {
+    "lint": "eslint .",
     "test": "mocha",
     "test:watch": "mocha --watch",
     "build:clean": "rm -rf lib",
@@ -19,6 +20,7 @@
   "devDependencies": {
     "@babel/cli": "^7.22.10",
     "@babel/core": "^7.22.11",
+    "@babel/eslint-parser": "^7.22.11",
     "@babel/preset-env": "^7.22.14",
     "@types/eslint": "^8.44.2",
     "eslint": "^8.47.0",
