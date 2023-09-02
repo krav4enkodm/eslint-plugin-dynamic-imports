@@ -1,43 +1,43 @@
-"use strict";
+'use strict';
 
-const micromatch = require("micromatch");
-const path = require("path");
+const micromatch = require('micromatch');
+const path = require('path');
 
 /** @type {import('eslint').Rule.RuleModule}*/
 module.exports = {
   meta: {
-    type: "suggestion",
+    type: 'suggestion',
     docs: {
-      description: "Disallows specified paths for dynamic imports",
+      description: 'Disallows specified paths for dynamic imports',
       recommended: true,
-      url: "./no-restricted-paths.md",
+      url: './no-restricted-paths.md',
     },
-    fixable: "code",
+    fixable: 'code',
     messages: {
       mismatch: "'{{ value }}' matches disallowed pattern '{{ path }}'",
     },
     schema: {
       anyOf: [
         {
-          type: "array",
+          type: 'array',
           items: {
-            type: "string",
+            type: 'string',
           },
           uniqueItems: true,
         },
         {
-          type: "array",
+          type: 'array',
           items: {
-            type: "object",
+            type: 'object',
             properties: {
               path: {
-                type: "string",
+                type: 'string',
               },
               message: {
-                type: "string",
+                type: 'string',
               },
             },
-            required: ["path"],
+            required: ['path'],
           },
         },
       ],
@@ -47,18 +47,18 @@ module.exports = {
     const { options } = context;
     return {
       ImportExpression(node) {
-        if (typeof node.source.value !== "string") {
+        if (typeof node.source.value !== 'string') {
           return;
         }
 
         const { value } = node.source;
 
         for (const option of options) {
-          const isStringOption = typeof option === "string";
+          const isStringOption = typeof option === 'string';
           const pathToCheck = isStringOption ? option : option.path;
 
-          const normalizedValued = value.startsWith("..")
-            ? path.join("/", value)
+          const normalizedValued = value.startsWith('..')
+            ? path.join('/', value)
             : path.normalize(value);
 
           if (!micromatch.isMatch(normalizedValued, pathToCheck)) {
@@ -69,7 +69,7 @@ module.exports = {
             node,
             ...(!isStringOption && option.message
               ? { message: option.message }
-              : { messageId: "mismatch" }),
+              : { messageId: 'mismatch' }),
             data: {
               value,
               path: pathToCheck,

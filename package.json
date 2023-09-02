@@ -8,7 +8,8 @@
     "test": "mocha",
     "test:watch": "mocha --watch",
     "build:clean": "rm -rf lib",
-    "build": "npm run build:clean & babel src -d lib"
+    "build": "npm run build:clean & babel src -d lib",
+    "prepare": "husky install"
   },
   "keywords": [
     "eslint",
@@ -24,12 +25,19 @@
     "@babel/preset-env": "^7.22.14",
     "@types/eslint": "^8.44.2",
     "eslint": "^8.47.0",
-    "mocha": "^10.2.0"
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "mocha": "^10.2.0",
+    "prettier": "3.0.3"
   },
   "dependencies": {
     "micromatch": "^4.0.5"
   },
   "peerDependencies": {
     "eslint": "^2"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js}": "prettier --write"
   }
 }
