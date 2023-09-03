@@ -2,6 +2,14 @@
   "name": "eslint-plugin-dynamic-imports",
   "version": "1.0.0",
   "description": "Rules for dynamic imports validation",
+  "homepage": "https://github.com/krav4enkodm/eslint-plugin-dynamic-imports",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/krav4enkodm/eslint-plugin-dynamic-imports"
+  },
+  "bugs": {
+    "url" : "https://github.com/krav4enkodm/eslint-plugin-dynamic-imports/issues"
+  },
   "main": "./lib/index.js",
   "scripts": {
     "lint": "eslint .",
