@@ -23,3 +23,25 @@ Also you can specify your own error message:
   "no-literal-expressions": ["error", "The custom error message"]
 }
 ```
+
+## Examples
+
+`.eslintrc`
+
+```json
+{
+  "no-literal-expressions": 2
+}
+```
+
+```js
+// good
+import('path/to/module')
+import(`path/to/module`)
+import("path/to/module")
+
+// bad
+import('path' + '/' + 'to' + '/' + 'module')
+import(`path/${to}/module`)
+import("path" + "/" + "to" + "/" + "module")
+```

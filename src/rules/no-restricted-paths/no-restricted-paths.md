@@ -60,3 +60,25 @@ There is an option to restrict the paths with global matchers
   ]
 }
 ```
+
+## Examples
+
+`.eslintrc`
+
+```json
+{
+  "no-restricted-paths": [2, "path/to/foo", "bar/**"]
+}
+```
+
+```js
+// good
+import('path/to/bar')
+import('path/to/baz')
+import('foo/bar/baz')
+
+// bad
+import('path/to/foo')
+import('bar/baz')
+import('./bar/baz')
+```

@@ -1,5 +1,7 @@
 # eslint-plugin-dynamic-imports
 
+Rules for dynamic imports validation
+
 ## Installation
 
 ```sh
